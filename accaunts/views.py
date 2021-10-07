@@ -18,14 +18,17 @@ def user_register_view(request):
     print(request)
     if request.POST.get('phone','') == '':
         return render(request, 'index.html')
-
-    phones = User.objects.all().filter(phone_number=request.POST.get('phone',''))
+    phone_number = request.POST.get('phone','')[-9:]
+    phone_number = '+998' + phone_number
+    phones = User.objects.all().filter(phone_number=phone_number)
     if phones:
         return render(request, 'registeryes.html')
+
+
     try:
         user = User.objects.create(
             user_fish=request.POST.get('name', ''),
-            phone_number = request.POST.get('phone', ''),
+            phone_number=phone_number,
             offline_auditoriya=on,
             online_zoom=of
         )
