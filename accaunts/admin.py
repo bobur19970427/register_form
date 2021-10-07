@@ -1,9 +1,12 @@
 from django.contrib import admin
 
 # Register your models here.
-from . import models
+from django.contrib.auth.models import Group
+
 from .models import User
-@admin.register(models.User)
+@admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user_fish', 'phone_number', 'online_auditoriya', 'offline_zoom')
 
+admin.site.unregister(Group)
+admin.site.site_header = 'islom-moliyasi uz | admin'
