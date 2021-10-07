@@ -11,7 +11,7 @@ from .models import User
 def user_register_view(request):
     on = False
     of = False
-    if request.POST.get('offline', False) == 'off':
+    if request.POST.get('offline', False) == 'on':
         on= True
     else:
         of= True
