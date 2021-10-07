@@ -1,6 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
+from . import models
 from .models import User
-
-admin.site.register(User)
+@admin.register(models.User)
+class DrugAdmin(admin.ModelAdmin):
+    list_display = ('user_fish', 'phone_number', 'online_auditoriya', 'offline_zoom')
+    ordering = ('-id')
