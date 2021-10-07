@@ -23,11 +23,11 @@ def user_register_view(request):
     if phones:
         return render(request, 'registeryes.html')
     try:
-        user=User.objects.create(
-            user_fish = request.POST.get('name', ''),
+        user = User.objects.create(
+            user_fish=request.POST.get('name', ''),
             phone_number = request.POST.get('phone', ''),
-            online_auditoriya=on,
-            offline_zoom=of
+            offline_auditoriya=on,
+            online_zoom=of
         )
         if user:
             return render(request, 'register.html')
